@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Find Us - Smart Energy Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo">404 Find Us</div>
+    <nav>
+      <a href="#">Overview</a>
+      <a href="#">Devices</a>
+      <a href="#">Analytics</a>
+      <a href="#">Settings</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Current Usage</h2>
+      <p style="font-size: 2rem;">1250W</p>
+    </div>
+
+    <div class="card">
+      <h2>Live Energy</h2>
+      <canvas id="energyChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>Smart Appliances</h2>
+      <div class="appliance">
+        <span>Smart Lamp</span>
+        <button onclick="toggle(this)">On</button>
+      </div>
+      <div class="appliance">
+        <span>Air Conditioner</span>
+        <button onclick="toggle(this)">Off</button>
+      </div>
+      <div class="appliance">
+        <span>Smart Fridge</span>
+        <button onclick="toggle(this)">On</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>AI Bill Prediction</h2>
+      <p style="font-size: 1.5rem;">€75,00 / maand</p>
+      <p style="color: #666; font-size: 0.9rem;">Gebaseerd op huidig verbruik</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
