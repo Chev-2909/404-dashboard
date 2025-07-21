@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Energy Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <ul>
+        <li><a href="overview.html">📊 Overview</a></li>
+        <li><a href="devices.html">🔌 Devices</a></li>
+        <li><a href="analytics.html">📈 Analytics</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main content -->
+    <div class="main-content">
+      <header>
+        <h1>⚡ 404 Found Us</h1>
+      </header>
+
+      <main class="dashboard">
+        <!-- Current Usage (LEFT) -->
+        <section class="card current-usage">
+          <h2>⚙️ Current Usage</h2>
+          <div class="info-group">
+            <span class="label">Real-time Power:</span>
+            <span class="value">1.5 kW ⚡</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Today's Consumption:</span>
+            <span class="value">6.2 kWh 🔋</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Monthly Total:</span>
+            <span class="value">155.3 kWh 📅</span>
+          </div>
+        </section>
+
+
+<!-- Filters & Zoekfunctie voor Smart Appliances -->
+<section id="device-filters">
+  <input type="text" id="searchInput" placeholder="🔍 Zoek apparaat..." />
+  <div id="filterButtons">
+    <button onclick="filterDevices('all')">Alle apparaten</button>
+    <button onclick="filterDevices('high')">⚡ Hoog verbruik</button>
+    <button onclick="filterDevices('offline')">⛔ Offline</button>
+  </div>
+</section>
+
+        <!-- Smart Appliances (CENTER) -->
+        <section class="card smart-appliances">
+          <h2>📱 Smart Appliances</h2>
+          <div class="info-group">
+            <span class="label">📺 TV:</span>
+            <span class="value">0.2 kW • $0.03/hr</span>
+          </div>
+          <div class="info-group">
+            <span class="label">🧊 Fridge:</span>
+            <span class="value">0.5 kW • $0.07/hr</span>
+          </div>
+          <div class="info-group">
+            <span class="label">💡 Lights:</span>
+            <span class="value">0.3 kW • $0.04/hr</span>
+          </div>
+          <div class="info-group">
+            <span class="label">🖥️ PC:</span>
+            <span class="value">0.8 kW • $0.10/hr</span>
+          </div>
+          <button class="add-device">➕ Add Device</button>
+        </section>
+
+        <!-- AI Bill (RIGHT) -->
+        <section class="card ai-bill">
+          <h2>💸 AI Bill Prediction</h2>
+          <div class="info-group">
+            <span class="label">Predicted Bill:</span>
+            <span class="value">$74.80</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Accuracy:</span>
+            <span class="value">92%</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Bill vs Last Month:</span>
+            <span class="value">+5%</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Days Left:</span>
+            <span class="value">11 days</span>
+          </div>
+        </section>
+      </main>
+
+      <!-- Live Energy -->
+      <section class="live-energy">
+        <h2>📊 Live Energy Monitoring</h2>
+        <canvas id="liveChart"></canvas>
+        <div class="actions">
+          <button>🔁 Refresh Data</button>
+          <button>📄 Export Report</button>
+          <button>📱 Download App</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

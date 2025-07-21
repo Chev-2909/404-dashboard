@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const devicesContainer = document.querySelector(".device-list");
+
+    // Hernoemen knop
+    devicesContainer.addEventListener("click", function (e) {
+      if (e.target.classList.contains("rename-btn")) {
+        const deviceDiv = e.target.closest(".device-item");
+        const nameEl = deviceDiv.querySelector("strong");
+        const currentName = nameEl.textContent;
+        const newName = prompt("Voer een nieuwe naam in:", currentName);
+        if (newName && newName.trim() !== "") {
+          nameEl.textContent = newName.trim();
+          deviceDiv.setAttribute("data-name", newName.trim());
+        }
+      }
+    });
+
+    // Verwijderen knop
+    devicesContainer.addEventListener("click", function (e) {
+      if (e.target.classList.contains("delete-btn")) {
+        const deviceDiv = e.target.closest(".device-item");
+        const name = deviceDiv.getAttribute("data-name");
+        const confirmDelete = confirm(`Weet je zeker dat je "${name}" wilt verwijderen?`);
+        if (confirmDelete) {
+          deviceDiv.remove();
+        }
+      }
+    });
+  });
+</script>
+
+
+  <div class="container">
+    </aside>
+ 
+<div class="settings-section">
+  <h2>Personalisatie</h2>
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider"></span>
+    </label>
+    <span class="toggle-label">Donker modus</span>
+  </div>
+</div>
+
+</div>
+
+
+    <div class="settings-menu">
+  <div class="setting-group">
+    <button class="setting-toggle">Account</button>
+    <div class="setting-dropdown">
+      <ul>
+        <li><a href="#">Naam wijzigen</a></li>
+        <li><a href="#">E-mailadres</a></li>
+        <li><a href="#">Wachtwoord wijzigen</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <button class="setting-toggle">Privacy</button>
+    <div class="setting-dropdown">
+      <ul>
+        <li><a href="#">Toestemmingen beheren</a></li>
+        <li><a href="#">Locatie-instellingen</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <button class="setting-toggle">Taalgebruik</button>
+    <div class="setting-dropdown">
+      <ul>
+        <li><a href="#">Taal wijzigen</a></li>
+        <li><a href="#">Automatisch vertalen</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="setting-group">
+    <button class="setting-toggle">Help & Info</button>
+    <div class="setting-dropdown">
+      <ul>
+        <li><a href="#">Veelgestelde vragen</a></li>
+        <li><a href="#">Over deze app</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+ 
+<button class="accordion-header">Apparatuurbeheer</button>
+<div class="accordion-body device-list">
+  <div class="device-item">
+  
+
+
+</div>
+
+<div class="device-list">
+  <div class="device-item" data-name="Smart Fridge">
+    <strong>Smart Fridge</strong>
+    <div class="device-actions">
+      <button class="rename-btn">Hernoemen</button>
+      <button class="delete-btn">Verwijderen</button>
+    </div>
+  </div>
+  <div class="device-item" data-name="AC Unit">
+    <strong>AC Unit</strong>
+    <div class="device-actions">
+      <button class="rename-btn">Hernoemen</button>
+      <button class="delete-btn">Verwijderen</button>
+    </div>
+  </div>
+  <div class="device-item" data-name="TV">
+    <strong>TV</strong>
+    <div class="device-actions">
+      <button class="rename-btn">Hernoemen</button>
+      <button class="delete-btn">Verwijderen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+    const devicesContainer = document.querySelector(".device-list");
+    const addButton = document.getElementById("add-device-btn");
+    const nameInput = document.getElementById("new-device-name");
+    
+    // Toevoegen knop handler
+    addButton.addEventListener("click", () => {
+      const name = nameInput.value.trim();
+      if (!name) return alert("Voer een apparaatnaam in.");
+      addDevice(name);
+      nameInput.value = "";
+    });
+
+    // Hernoemen/verwijderen knoppen
+    devicesContainer.addEventListener("click", function (e) {
+      const deviceDiv = e.target.closest(".device-item");
+      if (!deviceDiv) return;
+
+      const nameEl = deviceDiv.querySelector("strong");
+
+      if (e.target.classList.contains("rename-btn")) {
+        const newName = prompt("Nieuwe naam:", nameEl.textContent);
+        if (newName && newName.trim() !== "") {
+          nameEl.textContent = newName.trim();
+          deviceDiv.setAttribute("data-name", newName.trim());
+        }
+      }
+
+      if (e.target.classList.contains("delete-btn")) {
+        const confirmDelete = confirm(`"${nameEl.textContent}" verwijderen?`);
+        if (confirmDelete) {
+          deviceDiv.remove();
+        }
+      }
+    });
+
+    // Apparaat toevoegen aan de lijst
+    function addDevice(name) {
+      const div = document.createElement("div");
+      div.className = "device-item";
+      div.setAttribute("data-name", name);
+      div.innerHTML = `
+        <strong>${name}</strong>
+        <div class="device-actions">
+          <button class="rename-btn">Hernoemen</button>
+          <button class="delete-btn">Verwijderen</button>
+        </div>
+      `;
+      devicesContainer.appendChild(div);
+    }
+  });
+</script>
+
+
+
+</div>
+</ul>
+  <button id="addDeviceBtn">+ Nieuw apparaat toevoegen</button>
+</div>
+
+<!-- ✅ 1. Toegevoegde apparaten verschijnen hier -->
+<div id="added-devices"></div>
+
+<!-- ✅ 2. Toevoegveld komt daaronder -->
+<div id="add-device-section" style="margin-top: 2rem;">
+  <input type="text" id="new-device-name" placeholder="Nieuw apparaat..." />
+  <button id="add-device-btn">Toevoegen</button>
+</div>
+
+<section id="deviceManager">
+  <h2>Beheer Apparaten</h2>
+
+  <!-- Toevoegen -->
+  <div class="device-form">
+    <input type="text" id="newDeviceName" placeholder="Nieuw apparaat..." />
+    <button onclick="addDevice()">Toevoegen</button>
+  </div>
+
+  <!-- Lijst -->
+  <ul id="deviceList"></ul>
+</section>
+
+
+</div>
+
+</body>
+</html>
